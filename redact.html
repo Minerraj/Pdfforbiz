@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redact PDF Online Free — Black Out Account Numbers | PDFforBiz</title>
+<meta name="description" content="Redact a PDF for free by drawing black boxes over sensitive info before sharing an invoice or statement. Flattens the page so hidden text can't be copied out. Nothing uploaded.">
+<link rel="canonical" href="https://pdfforbiz.com/redact.html">
+<meta property="og:title" content="Redact PDF Online Free — PDFforBiz">
+<meta property="og:description" content="Black out account numbers and client info before sharing a PDF, free and private, right in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pdfforbiz.com/redact.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Redact PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (browser-based)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/redact.html"
+}
+</script>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand">PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <a href="/merge.html" class="tab">Merge</a>
+  <a href="/compress.html" class="tab">Compress</a>
+  <a href="/pdf-to-word.html" class="tab">Convert</a>
+  <a href="/receipt-to-pdf.html" class="tab">Scan</a>
+  <a href="/redact.html" class="tab active">Redact</a>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Redact PDF</div>
+  <h1>Black out account numbers before sharing.</h1>
+  <p class="sub">Draw black boxes directly over sensitive text, then flatten the page so it can't be selected or copied out. Nothing leaves your browser.</p>
+</div>
+
+<p class="intro-copy">Simply drawing a black box in most PDF viewers only covers the text visually — the original text is still selectable underneath. This tool flattens each page into an image after redacting, so what's covered is genuinely gone from the file.</p>
+
+<section class="tool" id="redact">
+  <div class="ledger-sheet">
+    <h2>Redact PDF</h2>
+    <p class="desc">Upload a PDF, draw over anything sensitive, then export. Each page is flattened on export — text underneath your boxes is permanently removed.</p>
+
+    <div class="dropzone" id="dropzoneRD">
+      <strong>Click to choose a file</strong> or drag a PDF here
+      <input type="file" id="fileInputRD" accept="application/pdf">
+    </div>
+
+    <div id="editorWrap" style="display:none;">
+      <div class="redact-controls">
+        <div class="page-nav">
+          <button id="prevPage" title="Previous page">←</button>
+          <span id="pageLabel">Page 1 / 1</span>
+          <button id="nextPage" title="Next page">→</button>
+        </div>
+        <button class="secondary" id="undoBox">Undo last box</button>
+        <button class="secondary" id="clearBoxes">Clear this page</button>
+        <span style="color:var(--ink-soft);">Drag on the page to draw a black box.</span>
+      </div>
+      <div class="redact-canvas-wrap">
+        <canvas id="pageCanvas"></canvas>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="exportBtn" disabled>Flatten &amp; download</button>
+      <span class="status" id="statusRD"></span>
+    </div>
+
+    <div class="privacy-note">
+      <strong>Where your files go:</strong> nowhere. This tool runs entirely in your browser using client-side PDF processing — no upload, no storage, no account.
+    </div>
+  </div>
+</section>
+
+<div class="related-tools">
+  Related: <a href="/merge.html">Merge PDF</a> <a href="/compress.html">Compress PDF</a> <a href="/pdf-to-word.html">PDF to Word</a>
+</div>
+
+<section class="faq">
+  <div class="faq-item">
+    <h3>Is this real redaction, or just a black box on top?</h3>
+    <p>Each page is rasterized (turned into a flattened image) on export, so the original text underneath your black boxes no longer exists in the output file — it can't be selected, searched, or copied out.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Will the exported file still look like a normal PDF?</h3>
+    <p>Yes — it opens and displays like any PDF. The only difference is that every page is now an image rather than searchable text, which is what makes the redaction permanent.</p>
+  </div>
+</section>
+
+<footer>
+  <span>PDFforBiz — PDF tools for small business paperwork</span>
+  <span><a href="/merge.html">Merge</a> · <a href="/compress.html">Compress</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/redact.html">Redact</a></span>
+</footer>
+
+<script src="common.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+const { PDFDocument } = PDFLib;
+
+let pdfDocJs = null;
+let numPages = 0;
+let currentPage = 1;
+let pagesData = {}; // { [pageNum]: { canvas: offscreen canvas, boxes: [{x,y,w,h}] } }
+let sourceFileName = 'redacted.pdf';
+
+const dropzoneRD = document.getElementById('dropzoneRD');
+const fileInputRD = document.getElementById('fileInputRD');
+const editorWrap = document.getElementById('editorWrap');
+const pageCanvas = document.getElementById('pageCanvas');
+const ctx = pageCanvas.getContext('2d');
+const pageLabel = document.getElementById('pageLabel');
+const prevPageBtn = document.getElementById('prevPage');
+const nextPageBtn = document.getElementById('nextPage');
+const undoBoxBtn = document.getElementById('undoBox');
+const clearBoxesBtn = document.getElementById('clearBoxes');
+const exportBtn = document.getElementById('exportBtn');
+const statusElRD = document.getElementById('statusRD');
+
+setupDropzone(dropzoneRD, fileInputRD, files => {
+  const f = Array.from(files).find(x => x.type === 'application/pdf');
+  if (f) loadPdf(f);
+});
+
+async function loadPdf(file){
+  statusElRD.textContent = 'Loading…';
+  statusElRD.className = 'status';
+  sourceFileName = file.name.replace(/\.pdf$/i, '') + '-redacted.pdf';
+  pagesData = {};
+  currentPage = 1;
+  const bytes = await file.arrayBuffer();
+  pdfDocJs = await pdfjsLib.getDocument({ data: bytes }).promise;
+  numPages = pdfDocJs.numPages;
+  editorWrap.style.display = 'block';
+  exportBtn.disabled = false;
+  await showPage(1);
+  statusElRD.textContent = `${numPages} page${numPages>1?'s':''} loaded. Draw over anything sensitive.`;
+  statusElRD.className = 'status';
+}
+
+async function renderPageToCache(n){
+  if (pagesData[n]) return pagesData[n];
+  const page = await pdfDocJs.getPage(n);
+  const viewport = page.getViewport({ scale: 1.5 });
+  const off = document.createElement('canvas');
+  off.width = viewport.width;
+  off.height = viewport.height;
+  await page.render({ canvasContext: off.getContext('2d'), viewport }).promise;
+  pagesData[n] = { canvas: off, boxes: [] };
+  return pagesData[n];
+}
+
+async function showPage(n){
+  currentPage = n;
+  const data = await renderPageToCache(n);
+  pageCanvas.width = data.canvas.width;
+  pageCanvas.height = data.canvas.height;
+  redraw();
+  pageLabel.textContent = `Page ${n} / ${numPages}`;
+  prevPageBtn.disabled = n <= 1;
+  nextPageBtn.disabled = n >= numPages;
+}
+
+function redraw(){
+  const data = pagesData[currentPage];
+  ctx.drawImage(data.canvas, 0, 0);
+  ctx.fillStyle = '#000';
+  data.boxes.forEach(b => ctx.fillRect(b.x, b.y, b.w, b.h));
+}
+
+prevPageBtn.addEventListener('click', () => { if (currentPage > 1) showPage(currentPage - 1); });
+nextPageBtn.addEventListener('click', () => { if (currentPage < numPages) showPage(currentPage + 1); });
+undoBoxBtn.addEventListener('click', () => {
+  const data = pagesData[currentPage];
+  if (data && data.boxes.length){ data.boxes.pop(); redraw(); }
+});
+clearBoxesBtn.addEventListener('click', () => {
+  const data = pagesData[currentPage];
+  if (data){ data.boxes = []; redraw(); }
+});
+
+// Drawing interaction
+let drawing = false;
+let startX = 0, startY = 0;
+
+function canvasCoords(e){
+  const rect = pageCanvas.getBoundingClientRect();
+  const scaleX = pageCanvas.width / rect.width;
+  const scaleY = pageCanvas.height / rect.height;
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
+}
+
+function onDown(e){
+  e.preventDefault();
+  const p = canvasCoords(e);
+  drawing = true;
+  startX = p.x; startY = p.y;
+}
+function onMove(e){
+  if (!drawing) return;
+  e.preventDefault();
+  const p = canvasCoords(e);
+  redraw();
+  ctx.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx.fillRect(Math.min(startX,p.x), Math.min(startY,p.y), Math.abs(p.x-startX), Math.abs(p.y-startY));
+}
+function onUp(e){
+  if (!drawing) return;
+  drawing = false;
+  const p = canvasCoords(e.changedTouches ? { touches: e.changedTouches } : e);
+  const box = { x: Math.min(startX,p.x), y: Math.min(startY,p.y), w: Math.abs(p.x-startX), h: Math.abs(p.y-startY) };
+  if (box.w > 3 && box.h > 3){
+    pagesData[currentPage].boxes.push(box);
+  }
+  redraw();
+}
+
+pageCanvas.addEventListener('mousedown', onDown);
+pageCanvas.addEventListener('mousemove', onMove);
+window.addEventListener('mouseup', onUp);
+pageCanvas.addEventListener('touchstart', onDown, { passive:false });
+pageCanvas.addEventListener('touchmove', onMove, { passive:false });
+pageCanvas.addEventListener('touchend', onUp);
+
+function dataURLToBytes(dataURL){
+  const base64 = dataURL.split(',')[1];
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+exportBtn.addEventListener('click', async () => {
+  exportBtn.disabled = true;
+  statusElRD.textContent = 'Flattening pages…';
+  statusElRD.className = 'status';
+  try {
+    const outDoc = await PDFDocument.create();
+    for (let n = 1; n <= numPages; n++){
+      const data = await renderPageToCache(n);
+      const exportCanvas = document.createElement('canvas');
+      exportCanvas.width = data.canvas.width;
+      exportCanvas.height = data.canvas.height;
+      const exCtx = exportCanvas.getContext('2d');
+      exCtx.drawImage(data.canvas, 0, 0);
+      exCtx.fillStyle = '#000';
+      data.boxes.forEach(b => exCtx.fillRect(b.x, b.y, b.w, b.h));
+
+      const dataUrl = exportCanvas.toDataURL('image/jpeg', 0.85);
+      const bytes = dataURLToBytes(dataUrl);
+      const embedded = await outDoc.embedJpg(bytes);
+      const page = outDoc.addPage([exportCanvas.width, exportCanvas.height]);
+      page.drawImage(embedded, { x: 0, y: 0, width: exportCanvas.width, height: exportCanvas.height });
+    }
+    const outBytes = await outDoc.save();
+    downloadBlob(new Blob([outBytes], { type: 'application/pdf' }), sourceFileName);
+    statusElRD.textContent = 'Done! Your download has started.';
+    statusElRD.className = 'status success';
+  } catch (err){
+    console.error(err);
+    statusElRD.textContent = 'Something went wrong during export.';
+    statusElRD.className = 'status error';
+  } finally {
+    exportBtn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

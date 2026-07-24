@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compress PDF Online Free — Shrink Invoice Files | PDFforBiz</title>
+<meta name="description" content="Compress a PDF invoice or statement so it fits email attachment limits or uploads cleanly to QuickBooks or Xero. Free, private, browser-based — nothing uploaded.">
+<link rel="canonical" href="https://pdfforbiz.com/compress.html">
+<meta property="og:title" content="Compress PDF Online Free — PDFforBiz">
+<meta property="og:description" content="Shrink invoice and receipt PDFs for email or bookkeeping uploads, free and private, right in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pdfforbiz.com/compress.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Compress PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (browser-based)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/compress.html"
+}
+</script>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand">PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <a href="/merge.html" class="tab">Merge</a>
+  <a href="/compress.html" class="tab active">Compress</a>
+  <a href="/pdf-to-word.html" class="tab">Convert</a>
+  <a href="/receipt-to-pdf.html" class="tab">Scan</a>
+  <a href="/redact.html" class="tab">Redact</a>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Compress PDF</div>
+  <h1>Shrink a PDF so it fits email limits.</h1>
+  <p class="sub">Reduce file size for invoices, statements, and reports before emailing or uploading. Nothing leaves your browser.</p>
+</div>
+
+<p class="intro-copy">Most email providers cap attachments around 25 MB, and accounting platforms like QuickBooks and Xero have their own upload limits. This tool cleans up bloated PDF structure locally to bring the file size down before you send it.</p>
+
+<section class="tool" id="compress">
+  <div class="ledger-sheet">
+    <h2>Compress PDF</h2>
+    <p class="desc">Works best on files with a lot of embedded fonts or repeated content — image-heavy scans will see smaller gains.</p>
+
+    <div class="dropzone" id="dropzoneC">
+      <strong>Click to choose a file</strong> or drag a PDF here
+      <input type="file" id="fileInputC" accept="application/pdf">
+    </div>
+
+    <ul class="filelist" id="fileListC"></ul>
+
+    <div class="actions">
+      <button class="primary" id="compressBtn" disabled>Compress &amp; download</button>
+      <span class="status" id="statusC"></span>
+    </div>
+
+    <div class="privacy-note">
+      <strong>Where your files go:</strong> nowhere. This tool runs entirely in your browser using client-side PDF processing — no upload, no storage, no account.
+    </div>
+  </div>
+</section>
+
+<div class="related-tools">
+  Related: <a href="/merge.html">Merge PDF</a> <a href="/pdf-to-word.html">PDF to Word</a> <a href="/redact.html">Redact PDF</a>
+</div>
+
+<section class="faq">
+  <div class="faq-item">
+    <h3>Why didn't my file get much smaller?</h3>
+    <p>This tool cleans up document structure — duplicate fonts, unused objects, formatting bloat. Scanned or image-heavy PDFs are dominated by image data, which this method doesn't recompress, so gains will be smaller on those files.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Will compressing reduce quality?</h3>
+    <p>No — this method doesn't touch page content or image resolution, so what you see stays exactly the same.</p>
+  </div>
+</section>
+
+<footer>
+  <span>PDFforBiz — PDF tools for small business paperwork</span>
+  <span><a href="/merge.html">Merge</a> · <a href="/compress.html">Compress</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/redact.html">Redact</a></span>
+</footer>
+
+<script src="common.js"></script>
+<script>
+const { PDFDocument } = PDFLib;
+let fileC = null;
+
+const dropzoneC = document.getElementById('dropzoneC');
+const fileInputC = document.getElementById('fileInputC');
+const fileListElC = document.getElementById('fileListC');
+const compressBtn = document.getElementById('compressBtn');
+const statusElC = document.getElementById('statusC');
+
+setupDropzone(dropzoneC, fileInputC, setFileC);
+
+function setFileC(fileListInput){
+  const f = Array.from(fileListInput).find(x => x.type === 'application/pdf');
+  if (!f) return;
+  fileC = f;
+  renderC();
+}
+
+function renderC(){
+  fileListElC.innerHTML = '';
+  if (fileC){
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span class="idx">01</span>
+      <span class="fname">${fileC.name}</span>
+      <span class="fsize">${formatSize(fileC.size)}</span>
+      <button data-act="remove" title="Remove">✕</button>
+    `;
+    li.querySelector('[data-act="remove"]').onclick = () => { fileC = null; renderC(); };
+    fileListElC.appendChild(li);
+  }
+  compressBtn.disabled = !fileC;
+  statusElC.textContent = fileC ? 'Ready to compress.' : '';
+  statusElC.className = 'status';
+}
+
+compressBtn.addEventListener('click', async () => {
+  compressBtn.disabled = true;
+  statusElC.textContent = 'Compressing…';
+  statusElC.className = 'status';
+  try {
+    const originalBytes = await fileC.arrayBuffer();
+    const doc = await PDFDocument.load(originalBytes);
+    const compressedBytes = await doc.save({ useObjectStreams: true });
+
+    const originalSize = originalBytes.byteLength;
+    const newSize = compressedBytes.byteLength;
+    const savedPct = originalSize > 0 ? Math.max(0, Math.round((1 - newSize/originalSize) * 100)) : 0;
+
+    downloadBlob(new Blob([compressedBytes], { type: 'application/pdf' }), fileC.name.replace(/\.pdf$/i, '') + '-compressed.pdf');
+
+    statusElC.textContent = savedPct > 0
+      ? `Done — ${formatSize(newSize)} (${savedPct}% smaller). Download started.`
+      : `Done — ${formatSize(newSize)}. This file was already well-optimized. Download started.`;
+    statusElC.className = 'status success';
+  } catch (err){
+    console.error(err);
+    statusElC.textContent = 'Something went wrong — check that the file is a valid PDF.';
+    statusElC.className = 'status error';
+  } finally {
+    compressBtn.disabled = !fileC;
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merge PDF Online Free — Combine Invoices &amp; Receipts | PDFforBiz</title>
+<meta name="description" content="Merge multiple PDF invoices, receipts, or statements into one file for free. Reorder pages, no sign-up, nothing uploaded — runs entirely in your browser.">
+<link rel="canonical" href="https://pdfforbiz.com/merge.html">
+<meta property="og:title" content="Merge PDF Online Free — PDFforBiz">
+<meta property="og:description" content="Combine multiple invoices or receipts into a single PDF, free and private, right in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pdfforbiz.com/merge.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Merge PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (browser-based)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/merge.html"
+}
+</script>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand">PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <a href="/merge.html" class="tab active">Merge</a>
+  <a href="/compress.html" class="tab">Compress</a>
+  <a href="/pdf-to-word.html" class="tab">Convert</a>
+  <a href="/receipt-to-pdf.html" class="tab">Scan</a>
+  <a href="/redact.html" class="tab">Redact</a>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Merge PDF</div>
+  <h1>Combine invoices into one clean PDF.</h1>
+  <p class="sub">Stack multiple invoices, receipts, or statements into a single file — reorder as you go. Nothing leaves your browser.</p>
+</div>
+
+<p class="intro-copy">Bookkeepers and small business owners often need to merge several invoice PDFs into one file before filing for tax season or sending to an accountant. This tool combines them locally on your device, so nothing is uploaded anywhere.</p>
+
+<section class="tool" id="merge">
+  <div class="ledger-sheet">
+    <h2>Merge PDF</h2>
+    <p class="desc">Add your files in the order you want them stacked, then combine into one PDF.</p>
+
+    <div class="dropzone" id="dropzone">
+      <strong>Click to choose files</strong> or drag PDFs here
+      <input type="file" id="fileInput" accept="application/pdf" multiple>
+    </div>
+
+    <ul class="filelist" id="fileList"></ul>
+
+    <div class="actions">
+      <button class="primary" id="mergeBtn" disabled>Merge &amp; download</button>
+      <span class="status" id="status"></span>
+    </div>
+
+    <div class="privacy-note">
+      <strong>Where your files go:</strong> nowhere. This tool runs entirely in your browser using client-side PDF processing — no upload, no storage, no account.
+    </div>
+  </div>
+</section>
+
+<div class="related-tools">
+  Related: <a href="/compress.html">Compress PDF</a> <a href="/pdf-to-word.html">PDF to Word</a> <a href="/redact.html">Redact PDF</a>
+</div>
+
+<section class="faq">
+  <div class="faq-item">
+    <h3>Can I change the order of the files before merging?</h3>
+    <p>Yes — use the up and down arrows next to each file to reorder them before merging.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is there a file size or page limit?</h3>
+    <p>No hard limit is enforced, since everything runs on your device rather than a server. Very large files depend on your device's available memory.</p>
+  </div>
+</section>
+
+<footer>
+  <span>PDFforBiz — PDF tools for small business paperwork</span>
+  <span><a href="/merge.html">Merge</a> · <a href="/compress.html">Compress</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/redact.html">Redact</a></span>
+</footer>
+
+<script src="common.js"></script>
+<script>
+const { PDFDocument } = PDFLib;
+let files = [];
+
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const fileListEl = document.getElementById('fileList');
+const mergeBtn = document.getElementById('mergeBtn');
+const statusEl = document.getElementById('status');
+
+setupDropzone(dropzone, fileInput, addFiles);
+
+function addFiles(fileListInput){
+  for (const f of fileListInput){
+    if (f.type === 'application/pdf') files.push(f);
+  }
+  render();
+}
+
+function removeFile(i){ files.splice(i,1); render(); }
+function moveFile(i, dir){
+  const j = i + dir;
+  if (j < 0 || j >= files.length) return;
+  [files[i], files[j]] = [files[j], files[i]];
+  render();
+}
+
+function render(){
+  fileListEl.innerHTML = '';
+  files.forEach((f, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span class="idx">${String(i+1).padStart(2,'0')}</span>
+      <span class="fname">${f.name}</span>
+      <span class="fsize">${formatSize(f.size)}</span>
+      <button data-act="up" ${i===0?'disabled':''} title="Move up">↑</button>
+      <button data-act="down" ${i===files.length-1?'disabled':''} title="Move down">↓</button>
+      <button data-act="remove" title="Remove">✕</button>
+    `;
+    li.querySelector('[data-act="up"]').onclick = () => moveFile(i, -1);
+    li.querySelector('[data-act="down"]').onclick = () => moveFile(i, 1);
+    li.querySelector('[data-act="remove"]').onclick = () => removeFile(i);
+    fileListEl.appendChild(li);
+  });
+  mergeBtn.disabled = files.length < 2;
+  statusEl.textContent = files.length === 0 ? '' : files.length === 1 ? 'Add at least one more PDF to merge.' : `${files.length} files ready to merge.`;
+  statusEl.className = 'status';
+}
+
+mergeBtn.addEventListener('click', async () => {
+  mergeBtn.disabled = true;
+  statusEl.textContent = 'Merging…';
+  statusEl.className = 'status';
+  try {
+    const mergedPdf = await PDFDocument.create();
+    for (const file of files){
+      const bytes = await file.arrayBuffer();
+      const srcDoc = await PDFDocument.load(bytes);
+      const pages = await mergedPdf.copyPages(srcDoc, srcDoc.getPageIndices());
+      pages.forEach(p => mergedPdf.addPage(p));
+    }
+    const mergedBytes = await mergedPdf.save();
+    downloadBlob(new Blob([mergedBytes], { type: 'application/pdf' }), 'merged.pdf');
+    statusEl.textContent = 'Merged! Your download has started.';
+    statusEl.className = 'status success';
+  } catch (err){
+    console.error(err);
+    statusEl.textContent = 'Something went wrong — check that all files are valid PDFs.';
+    statusEl.className = 'status error';
+  } finally {
+    mergeBtn.disabled = files.length < 2;
+  }
+});
+</script>
+</body>
+</html>
