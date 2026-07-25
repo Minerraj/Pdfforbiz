@@ -1,0 +1,5 @@
+# ads.txt for pdfforbiz.com
+# Once your Google AdSense account is approved, replace the line below
+# with the exact snippet Google gives you in AdSense > Sites > pdfforbiz.com > View ads.txt.
+# It will look like:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
