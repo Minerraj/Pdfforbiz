@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split PDF Online Free — Extract Invoice Pages | PDFforBiz</title>
+<meta name="description" content="Split a PDF or extract specific pages online for free — pull one invoice out of a bundled bank statement without Adobe Acrobat. No sign-up, nothing uploaded.">
+<link rel="canonical" href="https://pdfforbiz.com/split.html">
+<meta property="og:title" content="Split PDF Online Free — Extract Invoice Pages | PDFforBiz">
+<meta property="og:description" content="Split a PDF or extract specific pages online for free — pull one invoice out of a bundled bank statement without Adobe Acrobat. No sign-up, nothing uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pdfforbiz.com/split.html">
+<meta property="og:image" content="https://pdfforbiz.com/og-image.jpg">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Split PDF Online Free — Extract Invoice Pages | PDFforBiz">
+<meta name="twitter:description" content="Split a PDF or extract specific pages online for free — pull one invoice out of a bundled bank statement without Adobe Acrobat. No sign-up, nothing uploaded.">
+<meta name="twitter:image" content="https://pdfforbiz.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Split PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any (browser-based)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/split.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What page format should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Either a range like \"2-5\", a list like \"1,3,7\", or a mix like \"1,3-5\". Page numbers start at 1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do the extracted pages keep their original order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 pages are extracted in the order they appear in the source file, regardless of the order you type them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I pull one invoice out of a bank statement PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload the statement, type the page number(s) the invoice appears on (e.g. \"4\" or \"4-5\"), and extract just those pages into their own file."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pdfforbiz.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Split PDF", "item": "https://pdfforbiz.com/split.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Split PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/split.html"
+}
+</script>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand"><img class="brand-icon" src="/logo-icon.svg" alt=""> PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  <nav class="tabs" id="siteTabs">
+  <a href="/merge.html" class="tab">Merge</a>
+  <a href="/split.html" class="tab active">Split</a>
+  <a href="/organize.html" class="tab">Organize</a>
+  <a href="/compress.html" class="tab">Compress</a>
+  <a href="/rotate.html" class="tab">Rotate</a>
+  <a href="/crop.html" class="tab">Crop</a>
+  <a href="/pdf-to-word.html" class="tab">Convert</a>
+  <a href="/pdf-to-jpg.html" class="tab">To JPG</a>
+  <a href="/pdf-to-png.html" class="tab">To PNG</a>
+  <a href="/receipt-to-pdf.html" class="tab">Scan</a>
+  <a href="/watermark.html" class="tab">Watermark</a>
+  <a href="/page-numbers.html" class="tab">Page #s</a>
+  <a href="/sign.html" class="tab">Sign</a>
+  <a href="/redact.html" class="tab">Redact</a>
+  </nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span>/</span> <span>Split PDF</span>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Split PDF</div>
+  <h1>Pull specific pages out of a PDF.</h1>
+  <p class="sub">Choose a page range to extract into its own file — handy for pulling one invoice out of a bundled statement. Nothing leaves your browser.</p>
+</div>
+
+<p class="intro-copy">Bank and vendor statements often bundle several invoices or transactions into one long PDF. This tool lets you pull out just the pages you need without touching the rest of the file. Works the same as paid PDF splitter tools, without the subscription or software install.</p>
+
+<section class="tool" id="split">
+  <div class="ledger-sheet">
+    <h2>Split PDF</h2>
+    <p class="desc">Upload a PDF, then enter the page range you want extracted (e.g. "2-4" or "1,3,5").</p>
+
+    <div class="dropzone" id="dropzoneS">
+      <strong>Click to choose a file</strong> or drag a PDF here
+      <input type="file" id="fileInputS" accept="application/pdf">
+    </div>
+
+    <ul class="filelist" id="fileListS"></ul>
+
+    <div class="actions" style="flex-direction:column; align-items:flex-start; gap:10px;">
+      <label style="font-size:0.85rem; color:var(--ink-soft);">Pages to extract:
+        <input type="text" id="pageRange" placeholder="e.g. 1-3 or 1,3,5" style="font-family:'IBM Plex Mono',monospace; padding:8px 10px; border:1px solid var(--line); border-radius:4px; margin-left:8px; width:160px;">
+      </label>
+      <div class="actions">
+        <button class="primary" id="splitBtn" disabled>Extract &amp; download</button>
+        <span class="status" id="statusS"></span>
+      </div>
+    </div>
+
+    <div class="privacy-note">
+      <strong>Where your files go:</strong> nowhere. This tool runs entirely in your browser using client-side PDF processing — no upload, no storage, no account.
+    </div>
+  </div>
+</section>
+
+
+<div class="content-block">
+  <h2>How it works</h2>
+  <ol>
+    <li>Upload the PDF you want to pull pages out of.</li>
+    <li>Type the page range you need — a single page, a range like "2-4", or a list like "1,3,5".</li>
+    <li>Click Extract — just those pages download as a new PDF, in their original order.</li>
+  </ol>
+</div>
+
+<div class="content-block">
+  <h2>Who uses this</h2>
+  <ul>
+    <li>Pulling one invoice out of a bank or vendor statement that bundles several together</li>
+    <li>Separating a signed contract page from a larger document</li>
+    <li>Extracting a single client's records from a shared report</li>
+  </ul>
+</div>
+
+<div class="related-tools">
+  After this, you might also want to: <a href="/merge.html">Merge PDF</a> <a href="/rotate.html">Rotate PDF</a> <a href="/compress.html">Compress PDF</a>
+</div>
+
+<section class="faq">
+  <div class="faq-item">
+    <h3>What page format should I use?</h3>
+    <p>Either a range like "2-5", a list like "1,3,7", or a mix like "1,3-5". Page numbers start at 1.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do the extracted pages keep their original order?</h3>
+    <p>Yes — pages are extracted in the order they appear in the source file, regardless of the order you type them.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How do I pull one invoice out of a bank statement PDF?</h3>
+    <p>Upload the statement, type the page number(s) the invoice appears on (e.g. "4" or "4-5"), and extract just those pages into their own file.</p>
+  </div>
+</section>
+
+<footer>
+  <span>PDFforBiz — PDF tools for small business paperwork</span>
+  <span><a href="/merge.html">Merge</a> · <a href="/split.html">Split</a> · <a href="/organize.html">Organize</a> · <a href="/compress.html">Compress</a> · <a href="/rotate.html">Rotate</a> · <a href="/crop.html">Crop</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/pdf-to-jpg.html">To JPG</a> · <a href="/pdf-to-png.html">To PNG</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/watermark.html">Watermark</a> · <a href="/page-numbers.html">Page #s</a> · <a href="/sign.html">Sign</a> · <a href="/redact.html">Redact</a></span>
+  <span><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Security</a> · <a href="/alternatives.html">Alternatives</a> · <a href="/blog.html">Blog</a> · <a href="/sitemap.xml">Sitemap</a></span>
+</footer>
+
+<script src="common.js"></script>
+<script>
+const { PDFDocument } = PDFLib;
+let fileS = null;
+
+const dropzoneS = document.getElementById('dropzoneS');
+const fileInputS = document.getElementById('fileInputS');
+const fileListElS = document.getElementById('fileListS');
+const pageRangeInput = document.getElementById('pageRange');
+const splitBtn = document.getElementById('splitBtn');
+const statusElS = document.getElementById('statusS');
+
+setupDropzone(dropzoneS, fileInputS, setFileS);
+pageRangeInput.addEventListener('input', updateSplitBtn);
+
+function setFileS(fileListInput){
+  const f = Array.from(fileListInput).find(x => x.type === 'application/pdf');
+  if (!f) return;
+  fileS = f;
+  renderS();
+}
+
+function renderS(){
+  fileListElS.innerHTML = '';
+  if (fileS){
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span class="idx">01</span>
+      <span class="fname">${fileS.name}</span>
+      <span class="fsize">${formatSize(fileS.size)}</span>
+      <button data-act="remove" title="Remove">✕</button>
+    `;
+    li.querySelector('[data-act="remove"]').onclick = () => { fileS = null; renderS(); };
+    fileListElS.appendChild(li);
+  }
+  updateSplitBtn();
+}
+
+function updateSplitBtn(){
+  splitBtn.disabled = !fileS || pageRangeInput.value.trim() === '';
+  statusElS.textContent = fileS ? 'Ready — enter a page range above.' : '';
+  statusElS.className = 'status';
+}
+
+function parsePageRange(str, maxPage){
+  const indices = new Set();
+  str.split(',').forEach(part => {
+    part = part.trim();
+    if (!part) return;
+    if (part.includes('-')){
+      const [a, b] = part.split('-').map(n => parseInt(n.trim(), 10));
+      if (!isNaN(a) && !isNaN(b)){
+        for (let p = Math.min(a,b); p <= Math.max(a,b); p++){
+          if (p >= 1 && p <= maxPage) indices.add(p - 1);
+        }
+      }
+    } else {
+      const p = parseInt(part, 10);
+      if (!isNaN(p) && p >= 1 && p <= maxPage) indices.add(p - 1);
+    }
+  });
+  return [...indices].sort((a,b) => a-b);
+}
+
+splitBtn.addEventListener('click', async () => {
+  splitBtn.disabled = true;
+  statusElS.textContent = 'Extracting…';
+  statusElS.className = 'status';
+  try {
+    const bytes = await fileS.arrayBuffer();
+    const srcDoc = await PDFDocument.load(bytes);
+    const maxPage = srcDoc.getPageCount();
+    const indices = parsePageRange(pageRangeInput.value, maxPage);
+
+    if (indices.length === 0){
+      statusElS.textContent = `No valid pages found in that range (this file has ${maxPage} page${maxPage>1?'s':''}).`;
+      statusElS.className = 'status error';
+      splitBtn.disabled = false;
+      return;
+    }
+
+    const outDoc = await PDFDocument.create();
+    const pages = await outDoc.copyPages(srcDoc, indices);
+    pages.forEach(p => outDoc.addPage(p));
+    const outBytes = await outDoc.save();
+    downloadBlob(new Blob([outBytes], { type: 'application/pdf' }), fileS.name.replace(/\.pdf$/i, '') + '-extracted.pdf');
+    statusElS.textContent = `Done — ${indices.length} page${indices.length>1?'s':''} extracted. Download started.`;
+    statusElS.className = 'status success';
+  } catch (err){
+    console.error(err);
+    statusElS.textContent = 'Something went wrong — check that the file is a valid PDF.';
+    statusElS.className = 'status error';
+  } finally {
+    splitBtn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

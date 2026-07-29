@@ -4,19 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compress PDF Online Free — Shrink Invoice Files | PDFforBiz</title>
-<meta name="description" content="Compress a PDF invoice or statement so it fits email attachment limits or uploads cleanly to QuickBooks or Xero. Free, private, browser-based — nothing uploaded.">
+<meta name="description" content="Compress a PDF online for free to fit under 25MB email limits or upload cleanly to QuickBooks or Xero. No Adobe Acrobat needed, nothing uploaded to a server.">
 <link rel="canonical" href="https://pdfforbiz.com/compress.html">
-<meta property="og:title" content="Compress PDF Online Free — PDFforBiz">
-<meta property="og:description" content="Shrink invoice and receipt PDFs for email or bookkeeping uploads, free and private, right in your browser.">
+<meta property="og:title" content="Compress PDF Online Free — Shrink Invoice Files | PDFforBiz">
+<meta property="og:description" content="Compress a PDF online for free to fit under 25MB email limits or upload cleanly to QuickBooks or Xero. No Adobe Acrobat needed, nothing uploaded to a server.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pdfforbiz.com/compress.html">
+<meta property="og:image" content="https://pdfforbiz.com/og-image.jpg">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compress PDF Online Free — Shrink Invoice Files | PDFforBiz">
-<meta name="twitter:description" content="Compress a PDF invoice or statement so it fits email attachment limits or uploads cleanly to QuickBooks or Xero. Free, private, browser-based — nothing uploaded.">
+<meta name="twitter:description" content="Compress a PDF online for free to fit under 25MB email limits or upload cleanly to QuickBooks or Xero. No Adobe Acrobat needed, nothing uploaded to a server.">
+<meta name="twitter:image" content="https://pdfforbiz.com/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -31,17 +34,86 @@
   "url": "https://pdfforbiz.com/compress.html"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why didn't my file get much smaller?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This tool cleans up document structure \u2014 duplicate fonts, unused objects, formatting bloat. Scanned or image-heavy PDFs are dominated by image data, which this method doesn't recompress, so gains will be smaller on those files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will compressing reduce quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No \u2014 this method doesn't touch page content or image resolution, so what you see stays exactly the same."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get a PDF under 25MB for email?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload the file here and click Compress \u2014 it cleans up bloated PDF structure to reduce the file size before you attach it to an email."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pdfforbiz.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Compress PDF", "item": "https://pdfforbiz.com/compress.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Compress PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/compress.html"
+}
+</script>
 </head>
 <body>
 
 <header>
-  <a href="/" class="brand">PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <a href="/" class="brand"><img class="brand-icon" src="/logo-icon.svg" alt=""> PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  <nav class="tabs" id="siteTabs">
   <a href="/merge.html" class="tab">Merge</a>
+  <a href="/split.html" class="tab">Split</a>
+  <a href="/organize.html" class="tab">Organize</a>
   <a href="/compress.html" class="tab active">Compress</a>
+  <a href="/rotate.html" class="tab">Rotate</a>
+  <a href="/crop.html" class="tab">Crop</a>
   <a href="/pdf-to-word.html" class="tab">Convert</a>
+  <a href="/pdf-to-jpg.html" class="tab">To JPG</a>
+  <a href="/pdf-to-png.html" class="tab">To PNG</a>
   <a href="/receipt-to-pdf.html" class="tab">Scan</a>
+  <a href="/watermark.html" class="tab">Watermark</a>
+  <a href="/page-numbers.html" class="tab">Page #s</a>
+  <a href="/sign.html" class="tab">Sign</a>
   <a href="/redact.html" class="tab">Redact</a>
+  </nav>
 </header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span>/</span> <span>Compress PDF</span>
+</nav>
 
 <div class="hero">
   <div class="eyebrow">Compress PDF</div>
@@ -49,7 +121,7 @@
   <p class="sub">Reduce file size for invoices, statements, and reports before emailing or uploading. Nothing leaves your browser.</p>
 </div>
 
-<p class="intro-copy">Most email providers cap attachments around 25 MB, and accounting platforms like QuickBooks and Xero have their own upload limits. This tool cleans up bloated PDF structure locally to bring the file size down before you send it.</p>
+<p class="intro-copy">Most email providers cap attachments around 25 MB, and accounting platforms like QuickBooks and Xero have their own upload limits. This tool cleans up bloated PDF structure locally to bring the file size down before you send it. No Adobe Acrobat subscription needed — this handles the same job for free, right in your browser.</p>
 
 <section class="tool" id="compress">
   <div class="ledger-sheet">
@@ -74,8 +146,27 @@
   </div>
 </section>
 
+
+<div class="content-block">
+  <h2>How it works</h2>
+  <ol>
+    <li>Upload the PDF you need to shrink.</li>
+    <li>Click Compress — the tool cleans up bloated fonts, formatting, and unused data.</li>
+    <li>Download the smaller file, ready for email or upload.</li>
+  </ol>
+</div>
+
+<div class="content-block">
+  <h2>Who uses this</h2>
+  <ul>
+    <li>Getting an invoice under a 25MB email attachment limit</li>
+    <li>Meeting file-size requirements when uploading to QuickBooks, Xero, or a client portal</li>
+    <li>Keeping a shared drive or inbox from filling up with oversized PDFs</li>
+  </ul>
+</div>
+
 <div class="related-tools">
-  Related: <a href="/merge.html">Merge PDF</a> <a href="/pdf-to-word.html">PDF to Word</a> <a href="/redact.html">Redact PDF</a>
+  After this, you might also want to: <a href="/merge.html">Merge PDF</a> <a href="/pdf-to-word.html">PDF to Word</a> <a href="/redact.html">Redact PDF</a> — or read <a href="/blog-reduce-pdf-size.html">how to reduce PDF size without losing quality</a> and <a href="/blog-compress-pdf-under-5mb.html">how to get a PDF under 5MB</a>.
 </div>
 
 <section class="faq">
@@ -87,12 +178,16 @@
     <h3>Will compressing reduce quality?</h3>
     <p>No — this method doesn't touch page content or image resolution, so what you see stays exactly the same.</p>
   </div>
+  <div class="faq-item">
+    <h3>How do I get a PDF under 25MB for email?</h3>
+    <p>Upload the file here and click Compress — it cleans up bloated PDF structure to reduce the file size before you attach it to an email.</p>
+  </div>
 </section>
 
 <footer>
   <span>PDFforBiz — PDF tools for small business paperwork</span>
-  <span><a href="/merge.html">Merge</a> · <a href="/compress.html">Compress</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/redact.html">Redact</a></span>
-  <span><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></span>
+  <span><a href="/merge.html">Merge</a> · <a href="/split.html">Split</a> · <a href="/organize.html">Organize</a> · <a href="/compress.html">Compress</a> · <a href="/rotate.html">Rotate</a> · <a href="/crop.html">Crop</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/pdf-to-jpg.html">To JPG</a> · <a href="/pdf-to-png.html">To PNG</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/watermark.html">Watermark</a> · <a href="/page-numbers.html">Page #s</a> · <a href="/sign.html">Sign</a> · <a href="/redact.html">Redact</a></span>
+  <span><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Security</a> · <a href="/alternatives.html">Alternatives</a> · <a href="/blog.html">Blog</a> · <a href="/sitemap.xml">Sitemap</a></span>
 </footer>
 
 <script src="common.js"></script>

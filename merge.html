@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merge PDF Online Free — Combine Invoices &amp; Receipts | PDFforBiz</title>
-<meta name="description" content="Merge multiple PDF invoices, receipts, or statements into one file for free. Reorder pages, no sign-up, nothing uploaded — runs entirely in your browser.">
+<title>Merge PDF Free — Combine Invoices | PDFforBiz</title>
+<meta name="description" content="Merge multiple PDF files into one online for free — combine invoices, receipts, or statements without Adobe Acrobat. No sign-up, nothing uploaded, works in your browser.">
 <link rel="canonical" href="https://pdfforbiz.com/merge.html">
-<meta property="og:title" content="Merge PDF Online Free — PDFforBiz">
-<meta property="og:description" content="Combine multiple invoices or receipts into a single PDF, free and private, right in your browser.">
+<meta property="og:title" content="Merge PDF Free — Combine Invoices | PDFforBiz">
+<meta property="og:description" content="Merge multiple PDF files into one online for free — combine invoices, receipts, or statements without Adobe Acrobat. No sign-up, nothing uploaded, works in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pdfforbiz.com/merge.html">
+<meta property="og:image" content="https://pdfforbiz.com/og-image.jpg">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Merge PDF Online Free — Combine Invoices &amp; Receipts | PDFforBiz">
-<meta name="twitter:description" content="Merge multiple PDF invoices, receipts, or statements into one file for free. Reorder pages, no sign-up, nothing uploaded — runs entirely in your browser.">
+<meta name="twitter:title" content="Merge PDF Free — Combine Invoices | PDFforBiz">
+<meta name="twitter:description" content="Merge multiple PDF files into one online for free — combine invoices, receipts, or statements without Adobe Acrobat. No sign-up, nothing uploaded, works in your browser.">
+<meta name="twitter:image" content="https://pdfforbiz.com/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -31,17 +34,86 @@
   "url": "https://pdfforbiz.com/merge.html"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I change the order of the files before merging?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 use the up and down arrows next to each file to reorder them before merging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a file size or page limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hard limit is enforced, since everything runs on your device rather than a server. Very large files depend on your device's available memory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I merge PDF files without Adobe Acrobat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just use this page \u2014 add your files, reorder them if needed, and click Merge. No Acrobat, no install, and no account required."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pdfforbiz.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Merge PDF", "item": "https://pdfforbiz.com/merge.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Merge PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/merge.html"
+}
+</script>
 </head>
 <body>
 
 <header>
-  <a href="/" class="brand">PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <a href="/" class="brand"><img class="brand-icon" src="/logo-icon.svg" alt=""> PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  <nav class="tabs" id="siteTabs">
   <a href="/merge.html" class="tab active">Merge</a>
+  <a href="/split.html" class="tab">Split</a>
+  <a href="/organize.html" class="tab">Organize</a>
   <a href="/compress.html" class="tab">Compress</a>
+  <a href="/rotate.html" class="tab">Rotate</a>
+  <a href="/crop.html" class="tab">Crop</a>
   <a href="/pdf-to-word.html" class="tab">Convert</a>
+  <a href="/pdf-to-jpg.html" class="tab">To JPG</a>
+  <a href="/pdf-to-png.html" class="tab">To PNG</a>
   <a href="/receipt-to-pdf.html" class="tab">Scan</a>
+  <a href="/watermark.html" class="tab">Watermark</a>
+  <a href="/page-numbers.html" class="tab">Page #s</a>
+  <a href="/sign.html" class="tab">Sign</a>
   <a href="/redact.html" class="tab">Redact</a>
+  </nav>
 </header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span>/</span> <span>Merge PDF</span>
+</nav>
 
 <div class="hero">
   <div class="eyebrow">Merge PDF</div>
@@ -49,7 +121,7 @@
   <p class="sub">Stack multiple invoices, receipts, or statements into a single file — reorder as you go. Nothing leaves your browser.</p>
 </div>
 
-<p class="intro-copy">Bookkeepers and small business owners often need to merge several invoice PDFs into one file before filing for tax season or sending to an accountant. This tool combines them locally on your device, so nothing is uploaded anywhere.</p>
+<p class="intro-copy">Bookkeepers and small business owners often need to merge several invoice PDFs into one file before filing for tax season or sending to an accountant. This tool combines them locally on your device, so nothing is uploaded anywhere. No need to buy Adobe Acrobat or install anything — this works the same on a laptop or phone.</p>
 
 <section class="tool" id="merge">
   <div class="ledger-sheet">
@@ -74,8 +146,27 @@
   </div>
 </section>
 
+
+<div class="content-block">
+  <h2>How it works</h2>
+  <ol>
+    <li>Add two or more PDF files — invoices, receipts, or statements — by clicking or dragging them in.</li>
+    <li>Reorder them using the up/down arrows until they're stacked the way you want.</li>
+    <li>Click Merge — the combined file downloads immediately as one PDF.</li>
+  </ol>
+</div>
+
+<div class="content-block">
+  <h2>Who uses this</h2>
+  <ul>
+    <li>Bookkeepers combining monthly invoices before sending to an accountant</li>
+    <li>Freelancers merging multiple receipts into one file for expense reports</li>
+    <li>Anyone bundling contracts, appendices, or attachments before sending to a client</li>
+  </ul>
+</div>
+
 <div class="related-tools">
-  Related: <a href="/compress.html">Compress PDF</a> <a href="/pdf-to-word.html">PDF to Word</a> <a href="/redact.html">Redact PDF</a>
+  After this, you might also want to: <a href="/compress.html">Compress PDF</a> <a href="/pdf-to-word.html">PDF to Word</a> <a href="/redact.html">Redact PDF</a> — or read <a href="/blog-organize-invoices-tax-season.html">how to organize invoices for tax season</a> and <a href="/blog-merge-bank-statements.html">how to merge bank statement PDFs</a>.
 </div>
 
 <section class="faq">
@@ -87,12 +178,16 @@
     <h3>Is there a file size or page limit?</h3>
     <p>No hard limit is enforced, since everything runs on your device rather than a server. Very large files depend on your device's available memory.</p>
   </div>
+  <div class="faq-item">
+    <h3>How do I merge PDF files without Adobe Acrobat?</h3>
+    <p>Just use this page — add your files, reorder them if needed, and click Merge. No Acrobat, no install, and no account required.</p>
+  </div>
 </section>
 
 <footer>
   <span>PDFforBiz — PDF tools for small business paperwork</span>
-  <span><a href="/merge.html">Merge</a> · <a href="/compress.html">Compress</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/redact.html">Redact</a></span>
-  <span><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></span>
+  <span><a href="/merge.html">Merge</a> · <a href="/split.html">Split</a> · <a href="/organize.html">Organize</a> · <a href="/compress.html">Compress</a> · <a href="/rotate.html">Rotate</a> · <a href="/crop.html">Crop</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/pdf-to-jpg.html">To JPG</a> · <a href="/pdf-to-png.html">To PNG</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/watermark.html">Watermark</a> · <a href="/page-numbers.html">Page #s</a> · <a href="/sign.html">Sign</a> · <a href="/redact.html">Redact</a></span>
+  <span><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Security</a> · <a href="/alternatives.html">Alternatives</a> · <a href="/blog.html">Blog</a> · <a href="/sitemap.xml">Sitemap</a></span>
 </footer>
 
 <script src="common.js"></script>

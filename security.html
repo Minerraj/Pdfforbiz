@@ -3,21 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About PDFforBiz — Free PDF Tools for Small Business</title>
-<meta name="description" content="PDFforBiz builds free, private, browser-based PDF tools for small business owners — merge, compress, convert, scan, and redact invoices and receipts.">
-<link rel="canonical" href="https://pdfforbiz.com/about.html">
-<meta property="og:title" content="About PDFforBiz — Free PDF Tools for Small Business">
-<meta property="og:description" content="PDFforBiz builds free, private, browser-based PDF tools for small business owners.">
+<title>Security — How PDFforBiz Handles Your Files | PDFforBiz</title>
+<meta name="description" content="How PDFforBiz processes PDFs entirely in your browser, with nothing uploaded to a server — the technical details behind our privacy-first approach.">
+<link rel="canonical" href="https://pdfforbiz.com/security.html">
+<meta property="og:title" content="Security — How PDFforBiz Handles Your Files | PDFforBiz">
+<meta property="og:description" content="How PDFforBiz processes PDFs entirely in your browser, with nothing uploaded to a server — the technical details behind our privacy-first approach.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://pdfforbiz.com/about.html">
+<meta property="og:url" content="https://pdfforbiz.com/security.html">
 <meta property="og:image" content="https://pdfforbiz.com/og-image.jpg">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About PDFforBiz — Free PDF Tools for Small Business">
-<meta name="twitter:description" content="PDFforBiz builds free, private, browser-based PDF tools for small business owners — merge, compress, convert, scan, and redact invoices and receipts.">
+<meta name="twitter:title" content="Security — How PDFforBiz Handles Your Files | PDFforBiz">
+<meta name="twitter:description" content="How PDFforBiz processes PDFs entirely in your browser, with nothing uploaded to a server.">
 <meta name="twitter:image" content="https://pdfforbiz.com/og-image.jpg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -26,15 +25,7 @@
   .legal h1{font-size:2rem; margin-bottom:8px;}
   .legal h2{font-family:'Inter',sans-serif; font-weight:600; font-size:1.05rem; margin:32px 0 10px;}
   .legal p, .legal li{color:var(--ink-soft); font-size:0.95rem; line-height:1.6;}
-  .contact-box{
-    margin-top:32px;
-    padding:20px;
-    border:1px solid var(--line);
-    border-top:3px solid var(--ink);
-    border-radius:var(--radius);
-    background:var(--paper-card);
-  }
-  .contact-box p{margin:4px 0;}
+  .legal ul{padding-left:20px;}
 </style>
 <script type="application/ld+json">
 {
@@ -42,7 +33,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pdfforbiz.com/"},
-    {"@type": "ListItem", "position": 2, "name": "About", "item": "https://pdfforbiz.com/about.html"}
+    {"@type": "ListItem", "position": 2, "name": "Security", "item": "https://pdfforbiz.com/security.html"}
   ]
 }
 </script>
@@ -71,24 +62,31 @@
 </header>
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="/">Home</a> <span>/</span> <span>About</span>
+  <a href="/">Home</a> <span>/</span> <span>Security</span>
 </nav>
 
 <div class="legal">
-  <h1>About PDFforBiz</h1>
+  <h1>Security</h1>
+  <p>PDFforBiz's privacy claim isn't just marketing copy — here's the actual technical explanation of how your files are handled.</p>
 
-  <p>PDFforBiz is a small set of free PDF tools built specifically for the paperwork small business owners deal with every month — invoices, receipts, statements, and client documents.</p>
+  <h2>Client-side processing, not a server</h2>
+  <p>Every tool on this site — merging, compressing, converting, watermarking, redacting, and the rest — runs using JavaScript libraries (like pdf-lib and pdf.js) that execute directly in your browser. When you select a file, it's read into your browser's memory, processed there, and the result is offered back to you as a download. At no point is the file transmitted to a server for processing.</p>
 
-  <p>Most PDF tool sites are built for general use. PDFforBiz is narrower on purpose: every tool here is designed around the workflows small businesses and freelancers actually run into — merging invoices for tax season, compressing files for bookkeeping software uploads, turning a photographed receipt into a filed PDF, or redacting account numbers before sharing a statement.</p>
+  <h2>What this means in practice</h2>
+  <ul>
+    <li>Opening your browser's developer tools and watching the Network tab while using any tool will show no upload of your file content.</li>
+    <li>Closing the tab discards everything — there's no server-side copy left behind because none was ever made.</li>
+    <li>This is different from most online PDF tools, which typically upload your file to a server, process it there, and send back a result — a reasonable approach for most use cases, but one that involves your document leaving your device.</li>
+  </ul>
 
-  <h2>How it works</h2>
-  <p>Every tool runs entirely in your browser. Files are never uploaded to a server, stored, or seen by anyone — including us. Once you close the tab, everything is gone.</p>
+  <h2>What does reach a server</h2>
+  <p>The page itself (HTML, CSS, JavaScript, fonts) is loaded from Cloudflare's servers, same as any website. Anonymized traffic analytics (which pages are visited, roughly how many visitors) may be collected — see our <a href="/privacy.html">Privacy Policy</a> for details. None of this includes the content of files you process.</p>
 
-  <h2>Contact</h2>
-  <div class="contact-box">
-    <p><strong>Email:</strong> <a href="mailto:hello@pdfforbiz.com">hello@pdfforbiz.com</a></p>
-    <p><strong>Website:</strong> pdfforbiz.com</p>
-  </div>
+  <h2>The Redact tool specifically</h2>
+  <p>Because redaction has real consequences if done incorrectly, it's worth calling out directly: this tool works by flattening each page into a rasterized image after you draw over sensitive content, which permanently removes the underlying text layer from the output file. That said, always review the exported file yourself before sharing it — no tool should be trusted blindly with sensitive information.</p>
+
+  <h2>Reporting a concern</h2>
+  <p>If you find a security issue or have a question not covered here, reach out via the contact details on our <a href="/about.html">About page</a>.</p>
 </div>
 
 <footer>

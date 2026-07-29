@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redact PDF Online Free — Black Out Account Numbers | PDFforBiz</title>
-<meta name="description" content="Redact a PDF for free by drawing black boxes over sensitive info before sharing an invoice or statement. Flattens the page so hidden text can't be copied out. Nothing uploaded.">
+<title>Redact PDF Free — Black Out Sensitive Info | PDFforBiz</title>
+<meta name="description" content="Redact a PDF online for free by blacking out sensitive info before sharing — permanently removes the text, unlike Adobe Acrobat's basic markup. Nothing uploaded.">
 <link rel="canonical" href="https://pdfforbiz.com/redact.html">
-<meta property="og:title" content="Redact PDF Online Free — PDFforBiz">
-<meta property="og:description" content="Black out account numbers and client info before sharing a PDF, free and private, right in your browser.">
+<meta property="og:title" content="Redact PDF Free — Black Out Sensitive Info | PDFforBiz">
+<meta property="og:description" content="Redact a PDF online for free by blacking out sensitive info before sharing — permanently removes the text, unlike Adobe Acrobat's basic markup. Nothing uploaded.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pdfforbiz.com/redact.html">
+<meta property="og:image" content="https://pdfforbiz.com/og-image.jpg">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redact PDF Online Free — Black Out Account Numbers | PDFforBiz">
-<meta name="twitter:description" content="Redact a PDF for free by drawing black boxes over sensitive info before sharing an invoice or statement. Flattens the page so hidden text can't be copied out. Nothing uploaded.">
+<meta name="twitter:title" content="Redact PDF Free — Black Out Sensitive Info | PDFforBiz">
+<meta name="twitter:description" content="Redact a PDF online for free by blacking out sensitive info before sharing — permanently removes the text, unlike Adobe Acrobat's basic markup. Nothing uploaded.">
+<meta name="twitter:image" content="https://pdfforbiz.com/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -32,17 +35,86 @@
   "url": "https://pdfforbiz.com/redact.html"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this real redaction, or just a black box on top?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each page is rasterized (turned into a flattened image) on export, so the original text underneath your black boxes no longer exists in the output file \u2014 it can't be selected, searched, or copied out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the exported file still look like a normal PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 it opens and displays like any PDF. The only difference is that every page is now an image rather than searchable text, which is what makes the redaction permanent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I permanently remove text from a PDF, not just hide it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Draw a black box over the text here and export \u2014 the page is flattened into an image, so the underlying text is gone, not just visually covered."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pdfforbiz.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Redact PDF", "item": "https://pdfforbiz.com/redact.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Redact PDF — PDFforBiz",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://pdfforbiz.com/redact.html"
+}
+</script>
 </head>
 <body>
 
 <header>
-  <a href="/" class="brand">PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <a href="/" class="brand"><img class="brand-icon" src="/logo-icon.svg" alt=""> PDFforBiz <span>PDF / SMALL BIZ</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  <nav class="tabs" id="siteTabs">
   <a href="/merge.html" class="tab">Merge</a>
+  <a href="/split.html" class="tab">Split</a>
+  <a href="/organize.html" class="tab">Organize</a>
   <a href="/compress.html" class="tab">Compress</a>
+  <a href="/rotate.html" class="tab">Rotate</a>
+  <a href="/crop.html" class="tab">Crop</a>
   <a href="/pdf-to-word.html" class="tab">Convert</a>
+  <a href="/pdf-to-jpg.html" class="tab">To JPG</a>
+  <a href="/pdf-to-png.html" class="tab">To PNG</a>
   <a href="/receipt-to-pdf.html" class="tab">Scan</a>
+  <a href="/watermark.html" class="tab">Watermark</a>
+  <a href="/page-numbers.html" class="tab">Page #s</a>
+  <a href="/sign.html" class="tab">Sign</a>
   <a href="/redact.html" class="tab active">Redact</a>
+  </nav>
 </header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span>/</span> <span>Redact PDF</span>
+</nav>
 
 <div class="hero">
   <div class="eyebrow">Redact PDF</div>
@@ -50,7 +122,7 @@
   <p class="sub">Draw black boxes directly over sensitive text, then flatten the page so it can't be selected or copied out. Nothing leaves your browser.</p>
 </div>
 
-<p class="intro-copy">Simply drawing a black box in most PDF viewers only covers the text visually — the original text is still selectable underneath. This tool flattens each page into an image after redacting, so what's covered is genuinely gone from the file.</p>
+<p class="intro-copy">Simply drawing a black box in most PDF viewers only covers the text visually — the original text is still selectable underneath. This tool flattens each page into an image after redacting, so what's covered is genuinely gone from the file. A free alternative to Adobe Acrobat Pro's redaction tool, with the same core result: text that's actually gone.</p>
 
 <section class="tool" id="redact">
   <div class="ledger-sheet">
@@ -89,8 +161,27 @@
   </div>
 </section>
 
+
+<div class="content-block">
+  <h2>How it works</h2>
+  <ol>
+    <li>Upload the PDF you need to redact.</li>
+    <li>Drag directly over any sensitive text — account numbers, SSNs, client names — to draw black boxes.</li>
+    <li>Click Flatten & Download — the page is rasterized so the covered text is permanently gone, not just hidden.</li>
+  </ol>
+</div>
+
+<div class="content-block">
+  <h2>Who uses this</h2>
+  <ul>
+    <li>Blacking out an account number before sharing a bank statement</li>
+    <li>Removing a client's personal details before using a document as a template</li>
+    <li>Redacting pricing from a contract before sharing it as a public example</li>
+  </ul>
+</div>
+
 <div class="related-tools">
-  Related: <a href="/merge.html">Merge PDF</a> <a href="/compress.html">Compress PDF</a> <a href="/pdf-to-word.html">PDF to Word</a>
+  After this, you might also want to: <a href="/merge.html">Merge PDF</a> <a href="/compress.html">Compress PDF</a> <a href="/pdf-to-word.html">PDF to Word</a>
 </div>
 
 <section class="faq">
@@ -102,12 +193,16 @@
     <h3>Will the exported file still look like a normal PDF?</h3>
     <p>Yes — it opens and displays like any PDF. The only difference is that every page is now an image rather than searchable text, which is what makes the redaction permanent.</p>
   </div>
+  <div class="faq-item">
+    <h3>How do I permanently remove text from a PDF, not just hide it?</h3>
+    <p>Draw a black box over the text here and export — the page is flattened into an image, so the underlying text is gone, not just visually covered.</p>
+  </div>
 </section>
 
 <footer>
   <span>PDFforBiz — PDF tools for small business paperwork</span>
-  <span><a href="/merge.html">Merge</a> · <a href="/compress.html">Compress</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/redact.html">Redact</a></span>
-  <span><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></span>
+  <span><a href="/merge.html">Merge</a> · <a href="/split.html">Split</a> · <a href="/organize.html">Organize</a> · <a href="/compress.html">Compress</a> · <a href="/rotate.html">Rotate</a> · <a href="/crop.html">Crop</a> · <a href="/pdf-to-word.html">Convert</a> · <a href="/pdf-to-jpg.html">To JPG</a> · <a href="/pdf-to-png.html">To PNG</a> · <a href="/receipt-to-pdf.html">Scan</a> · <a href="/watermark.html">Watermark</a> · <a href="/page-numbers.html">Page #s</a> · <a href="/sign.html">Sign</a> · <a href="/redact.html">Redact</a></span>
+  <span><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Security</a> · <a href="/alternatives.html">Alternatives</a> · <a href="/blog.html">Blog</a> · <a href="/sitemap.xml">Sitemap</a></span>
 </footer>
 
 <script src="common.js"></script>
